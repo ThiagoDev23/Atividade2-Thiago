@@ -11,9 +11,10 @@ const DATA = [
   },
 ];
 
-const Card = ({title, description}) => {
+const Card = ({title, description, source}) => {
   return(
       <View style={styles.card}>
+        <Image style={styles.source} source={{uri:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrd-9Bfj2QOtKuZ1HeKJ1oN1qOg1lqS3SWpA&s'}}></Image>
         <Text style={styles.title}> {title}</Text>
         <Text style={styles.description}>{description}</Text>
       </View>
@@ -34,7 +35,7 @@ const Item = ({ image, text }) => (
 );
 
 const App = () => (
-  <SafeAreaProvider>
+  <SafeAreaProvider style={styles.fundo}>
 
       <SafeAreaView style={styles.container}>
         <Text style={styles.headerTitle}>Carros Esportivos!</Text>
@@ -50,7 +51,10 @@ const App = () => (
 );
 
 const styles = StyleSheet.create({
-    container: {
+  fundo: {
+      backgroundColor: 'black',
+  },
+  container: {
       flex: 1,
       alignItems: 'center',
     },
@@ -59,16 +63,23 @@ const styles = StyleSheet.create({
       height:  100,
       padding:  20,
       borderRadius: 10,
-      backgroundColor: 'black',
+      borderWidth: 2,
+      borderColor: 'gray',
+      backgroundColor: 'white',
+      marginTop: 10,
     },
     title: {
         fontSize: 16,
         marginBottom: 8,
-        color: 'white',        
+        color: 'black',
+        marginLeft: 100,
+        marginTop: -70,        
     },
     description: {
         fontSize: 12,
-        color: 'white',
+        color: 'black',
+        marginLeft: 100,
+         
     },
     container: {
       flex: 1,
@@ -102,6 +113,13 @@ const styles = StyleSheet.create({
       marginTop: 5,
       color: '#333',
       textAlign: 'left',
+      
+    },
+    source: {
+      width: 70,
+      height: 70,
+      borderRadius: 35,
+      marginTop: -7,
       
     },
 });
