@@ -11,12 +11,40 @@ const DATA = [
   },
 ];
 
-const Card = ({title, description, source}) => {
+const DATA2 = [
+  
+  {
+    
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrd-9Bfj2QOtKuZ1HeKJ1oN1qOg1lqS3SWpA&s',
+    text: ["kkkkkkkkkkk"],
+  },
+  {
+    
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrd-9Bfj2QOtKuZ1HeKJ1oN1qOg1lqS3SWpA&s',
+    text: ["kkkkkkkkkkk"],
+  },
+  {
+    
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrd-9Bfj2QOtKuZ1HeKJ1oN1qOg1lqS3SWpA&s',
+    text: ["kkkkkkkkkkk"],
+  },
+  {
+    
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrd-9Bfj2QOtKuZ1HeKJ1oN1qOg1lqS3SWpA&s',
+    text: ["kkkkkkkkkkk"],
+  },
+  {
+    
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrd-9Bfj2QOtKuZ1HeKJ1oN1qOg1lqS3SWpA&s',
+    text: ["kkkkkkkkkkk"],
+  },
+];
+
+const Card = ({image, text}) => {
   return(
       <View style={styles.card}>
-        <Image style={styles.source} source={{uri:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrd-9Bfj2QOtKuZ1HeKJ1oN1qOg1lqS3SWpA&s'}}></Image>
-        <Text style={styles.title}> {title}</Text>
-        <Text style={styles.description}>{description}</Text>
+        {image && <Image source={{ uri: image }} style={styles.source} />}
+        {text && text.map((line, index) => <Text key={index} style={styles.title}>{line}</Text>)}
       </View>
   );
 };
@@ -26,11 +54,7 @@ const Item = ({ image, text }) => (
     {image && <Image source={{ uri: image }} style={styles.image} />}
     {text && text.map((line, index) => <Text key={index} style={styles.text}>{line}</Text>)}
     
-      <Card title="teste1" description="Teste 2 ooo"/>
-      <Card title="teste1" description="Teste 2 ooo"/>
-      <Card title="teste1" description="Teste 2 ooo"/>
-      <Card title="teste1" description="Teste 2 ooo"/>
-      <Card title="teste1" description="Teste 2 ooo"/>
+
   </View>
 );
 
@@ -38,11 +62,17 @@ const App = () => (
   <SafeAreaProvider style={styles.fundo}>
 
       <SafeAreaView style={styles.container}>
-        <Text style={styles.headerTitle}>Carros Esportivos!</Text>
+
         <FlatList
           data={DATA}
           renderItem={({ item }) => <Item image={item.image} text={item.text} />}
           keyExtractor={(item) => item.id}
+        />
+        <FlatList
+          data={DATA2}
+          renderItem={({ item }) => <Card image={item.image} text={item.text} />}
+          keyExtractor={(item) => item.id}
+          style={styles.flat}
         />
 
       </SafeAreaView>
@@ -59,14 +89,15 @@ const styles = StyleSheet.create({
       alignItems: 'center',
     },
     card: {
-      width: "100%",
+      width: "98%",
       height:  100,
       padding:  20,
       borderRadius: 10,
-      borderWidth: 2,
+      borderWidth: 3,
       borderColor: 'gray',
       backgroundColor: 'white',
       marginTop: 10,
+      margin: 4,
     },
     title: {
         fontSize: 16,
@@ -91,13 +122,15 @@ const styles = StyleSheet.create({
       margin: 10,
     },
     item: {
-      backgroundColor: '#D3D3D3',
+      backgroundColor: 'white',
       padding: 1,
       marginVertical: 8,
       marginHorizontal: 13,
       alignItems: 'left',
       width: "95%", 
       borderRadius: 10, 
+      borderWidth: 3,
+      borderColor: 'gray',
     },
   
     image: {
@@ -121,6 +154,9 @@ const styles = StyleSheet.create({
       borderRadius: 35,
       marginTop: -7,
       
+    },
+    flat: {
+      paddingTop: 20,
     },
 });
 
