@@ -1,4 +1,4 @@
-import { View, FlatList, StyleSheet, Text, StatusBar, Image } from 'react-native';
+import { View, FlatList, StyleSheet, Text, StatusBar, Image, ScrollView } from 'react-native';
 import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 
 
@@ -56,24 +56,25 @@ const Item = ({ title, description }) => {
 );
 };
 const App = () => (
-  <SafeAreaProvider style={styles.fundo}>
+    <SafeAreaProvider style={styles.fundo}>
+      <ScrollView >
+          <SafeAreaView style={styles.container}>
 
-      <SafeAreaView style={styles.container}>
+            <Text style={styles.headerTitle}>Flamengo títulos</Text>
+            <Image style={styles.image} source={{uri:'https://i.pinimg.com/736x/c7/06/b2/c706b2f7087cc2570cdeabac7e6ca54f.jpg'}}></Image>
+              <Item title="História:" description="O Clube de Regatas do Flamengo, fundado em 17 de novembro de 1895, é um dos maiores e mais populares clubes do Brasil. Inicialmente criado para competições de remo, tornou-se uma potência no futebol, conquistando títulos nacionais e internacionais, incluindo múltiplos Campeonatos Brasileiros e a Copa Libertadores da América. Com uma torcida apaixonada, conhecida como a maior do país, o Flamengo tem como principais cores o vermelho e o preto e manda seus jogos no icônico estádio do Maracanã."/>
+          </SafeAreaView>
+          <SafeAreaView style={styles.box}>
+          <FlatList
+                data={DATA2}
+                renderItem={({ item }) => <Card image={item.image} text={item.text} description={item.description} />}
+                keyExtractor={(item) => item.id}
+                style={styles.flat}
+              />
+          </SafeAreaView>
+      </ScrollView>
+    </SafeAreaProvider>
 
-      <Text style={styles.headerTitle}>Flamengo títulos</Text>
-      <Image style={styles.image} source={{uri:'https://i.pinimg.com/736x/c7/06/b2/c706b2f7087cc2570cdeabac7e6ca54f.jpg'}}></Image>
-        <Item title="História:" description="O Clube de Regatas do Flamengo, fundado em 17 de novembro de 1895, é um dos maiores e mais populares clubes do Brasil. Inicialmente criado para competições de remo, tornou-se uma potência no futebol, conquistando títulos nacionais e internacionais, incluindo múltiplos Campeonatos Brasileiros e a Copa Libertadores da América. Com uma torcida apaixonada, conhecida como a maior do país, o Flamengo tem como principais cores o vermelho e o preto e manda seus jogos no icônico estádio do Maracanã."/>
-
-        <FlatList
-          data={DATA2}
-          renderItem={({ item }) => <Card image={item.image} text={item.text} description={item.description} />}
-          keyExtractor={(item) => item.id}
-          style={styles.flat}
-        />
-
-      </SafeAreaView>
-    
-  </SafeAreaProvider>
 );
 
 const styles = StyleSheet.create({
@@ -83,15 +84,22 @@ const styles = StyleSheet.create({
   container: {
       flex: 1,
       alignItems: 'center',
+
+    },
+    box: {
+      backgroundColor: 'black',
+
     },
     card: {
-      width: "98%",
+      width: "95%",
       height:  110,
       padding:  20,
       borderRadius: 10,
       borderWidth: 3,
       borderColor: 'gray',
       backgroundColor: 'white',
+      marginVertical: 8,
+      marginHorizontal: 13,
       marginTop: 10,
       margin: 4,
     },
@@ -146,6 +154,7 @@ const styles = StyleSheet.create({
       borderRadius: 10, 
       borderWidth: 3,
       borderColor: 'gray',
+      
     },
   
     image: {
@@ -164,6 +173,9 @@ const styles = StyleSheet.create({
       marginTop: -13,
       marginLeft: -10,
       
+    },
+    flat: {
+      marginTop: -50,
     },
 });
 
