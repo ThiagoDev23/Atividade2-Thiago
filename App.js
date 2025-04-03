@@ -62,7 +62,7 @@ const App = () => (
         keyExtractor={(item) => item.id}
         ListHeaderComponent={
           <>
-            <Text style={styles.headerTitle}>Flamengo títulos</Text>
+            <Text style={styles.headerTitle}>FlaApp</Text>
             <Image
               style={styles.image}
               source={{ uri: 'https://i.pinimg.com/736x/c7/06/b2/c706b2f7087cc2570cdeabac7e6ca54f.jpg' }}
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
       color: 'white',
       fontSize: 25,
       fontWeight: 'bold', 
-      marginLeft: 110,
+      marginLeft: 165,
     },
     item: {
       backgroundColor: 'white',
