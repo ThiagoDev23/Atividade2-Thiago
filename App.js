@@ -1,36 +1,35 @@
-import { View, FlatList, StyleSheet, Text, StatusBar, Image, ScrollView } from 'react-native';
+import { View, FlatList, StyleSheet, Text, StatusBar, Image } from 'react-native';
 import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 
 
 
-const DATA2 = [
-  
+const DATA = [
   {
-    
+    id: '1',
     image: 'https://i.pinimg.com/736x/af/41/fc/af41fc65f1fa2c145ff00106568afa39.jpg',
     text: ["Mundial:"],
     description: ["1x"],
   },
   {
-    
+    id: '2',
     image: 'https://i.pinimg.com/736x/26/3e/09/263e09a8b6342b65bb8a8bd1f5dbfec5.jpg',
     text: ["Copa Libertadores:"],
     description: ["3x"],
   },
   {
-    
+    id: '3',
     image: 'https://media.gettyimages.com/id/1434873773/pt/foto/rio-de-janeiro-brazil-the-trophy-is-displayed-prior-to-the-second-leg-match-of-the-final-of.jpg?s=612x612&w=0&k=20&c=f4sSzU1nBTWxv2fk1ByFQzkoyiJZoPyLNeqQZNmuobk=',
     text: ["Copa do Brasil:"],
     description: ["5x"],
   },
   {
-    
+    id: '4',
     image: 'https://i.pinimg.com/736x/b3/3a/00/b33a0061f9cb893876fbf32b98520bfc.jpg',
     text: ["Brasileirão:"],
     description: ["8x"],
   },
   {
-    
+    id: '5',
     image: 'https://64.media.tumblr.com/368a8c18d59ca3d1b4b5a267d83c68a5/69932c1a81634c09-0a/s1280x1920/8548570c4ff142b668510c2d52c24a8ce9781c72.pnj',
     text: ["Campeonato Carioca:"],
     description: ["39x"],
@@ -56,26 +55,36 @@ const Item = ({ title, description }) => {
 );
 };
 const App = () => (
-    <SafeAreaProvider style={styles.fundo}>
-      <ScrollView >
-          <SafeAreaView style={styles.container}>
-
+  <SafeAreaProvider style={styles.fundo}>
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        data={DATA}
+        keyExtractor={(item) => item.id}
+        ListHeaderComponent={
+          <>
             <Text style={styles.headerTitle}>Flamengo títulos</Text>
-            <Image style={styles.image} source={{uri:'https://i.pinimg.com/736x/c7/06/b2/c706b2f7087cc2570cdeabac7e6ca54f.jpg'}}></Image>
-              <Item title="História:" description="O Clube de Regatas do Flamengo, fundado em 17 de novembro de 1895, é um dos maiores e mais populares clubes do Brasil. Inicialmente criado para competições de remo, tornou-se uma potência no futebol, conquistando títulos nacionais e internacionais, incluindo múltiplos Campeonatos Brasileiros e a Copa Libertadores da América. Com uma torcida apaixonada, conhecida como a maior do país, o Flamengo tem como principais cores o vermelho e o preto e manda seus jogos no icônico estádio do Maracanã."/>
-          </SafeAreaView>
-          <SafeAreaView style={styles.box}>
-          <FlatList
-                data={DATA2}
-                renderItem={({ item }) => <Card image={item.image} text={item.text} description={item.description} />}
-                keyExtractor={(item) => item.id}
-                style={styles.flat}
-              />
-          </SafeAreaView>
-      </ScrollView>
-    </SafeAreaProvider>
-
+            <Image
+              style={styles.image}
+              source={{ uri: 'https://i.pinimg.com/736x/c7/06/b2/c706b2f7087cc2570cdeabac7e6ca54f.jpg' }}
+            />
+            <Item
+              title="História:"
+              description="O Clube de Regatas do Flamengo, fundado em 17 de novembro de 1895, é um dos maiores e mais populares clubes do Brasil. Inicialmente criado para competições de remo, tornou-se uma potência no futebol, conquistando títulos nacionais e internacionais, incluindo múltiplos Campeonatos Brasileiros e a Copa Libertadores da América. Com uma torcida apaixonada, conhecida como a maior do país, o Flamengo tem como principais cores o vermelho e o preto e manda seus jogos no icônico estádio do Maracanã."
+            />
+          </>
+        }
+        renderItem={({ item }) => (
+          <Card
+            image={item.image}
+            text={item.text}
+            description={item.description}
+          />
+        )}
+      />
+    </SafeAreaView>
+  </SafeAreaProvider>
 );
+
 
 const styles = StyleSheet.create({
   fundo: {
@@ -139,10 +148,8 @@ const styles = StyleSheet.create({
     headerTitle: {
       color: 'white',
       fontSize: 25,
-      margin: 10,
       fontWeight: 'bold', 
       marginLeft: 110,
-      marginTop: -10,
     },
     item: {
       backgroundColor: 'white',
