@@ -118,7 +118,8 @@ const styles = StyleSheet.create({
         color: 'black',
         marginLeft: 80,
         marginTop: -70,
-        fontWeight: 'bold',        
+        fontWeight: 'bold',  
+          fontFamily: 'Inter-Black',      
     },
     descrição: {
         fontSize: 14,
@@ -131,7 +132,8 @@ const styles = StyleSheet.create({
       color: 'black',
       marginLeft: 80,
       marginTop: -70,
-   
+      fontFamily: 'Inter-Black',
+
   },
   text: {
     fontSize: 18,
@@ -139,6 +141,7 @@ const styles = StyleSheet.create({
     color: 'black',
     textAlign: 'left',
     fontWeight: 'bold', 
+    fontFamily: 'Inter-Black',
     
   },
     container: {
@@ -148,8 +151,9 @@ const styles = StyleSheet.create({
     headerTitle: {
       color: 'white',
       fontSize: 25,
-      fontWeight: 'bold', 
       marginLeft: 165,
+      fontFamily: 'Inter-Black',
+      
     },
     item: {
       backgroundColor: 'white',
